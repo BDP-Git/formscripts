@@ -1,20 +1,26 @@
 (function(){
     window.addEventListener('load', function(){
 
-        // === DEINE FELD-IDs ===
-        var sourceControlId = 3445149;   // Quellfeld (von hier wird der Wert kopiert)
-        var targetControlId = 3457315;   // Zielfeld (hierhin wird der Wert geschrieben)
-        // ======================
+        // === FELD-PAARE DEFINIEREN ===
+        var fieldPairs = [
+            { source: 3445149, target: 3457315 },  // Paar 1 (bestehendes)
+            { source: 3445152, target: 3457317 },  // Paar 2 (neu)
+            { source: 3457309, target: 3457404 }   // Paar 3 (neu)
+        ];
+        // =============================
 
-        var sourceControlInstance = loader.getEngine().getDocument().getElementById(sourceControlId);
-        var targetControlInstance = loader.getEngine().getDocument().getElementById(targetControlId);
+        // Für jedes Paar die Synchronisation einrichten
+        fieldPairs.forEach(function(pair){
+            var sourceInstance = loader.getEngine().getDocument().getElementById(pair.source);
+            var targetInstance = loader.getEngine().getDocument().getElementById(pair.target);
 
-        // Bei jeder Änderung im Quellfeld: Wert ins Zielfeld kopieren
-        sourceControlInstance.on('value-change', function(){
-            targetControlInstance.setValue(sourceControlInstance.getValue());
+            // Bei jeder Änderung im Quellfeld: Wert ins Zielfeld kopieren
+            sourceInstance.on('value-change', function(){
+                targetInstance.setValue(sourceInstance.getValue());
+            });
+
+            // Initialwert beim Laden setzen
+            targetInstance.setValue(sourceInstance.getValue());
         });
-
-        // Initialwert beim Laden setzen (falls Quellfeld schon vorausgefüllt ist)
-        targetControlInstance.setValue(sourceControlInstance.getValue());
     });
 })();
