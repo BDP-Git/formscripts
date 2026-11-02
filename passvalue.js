@@ -3,9 +3,10 @@
 
         // === FELD-PAARE DEFINIEREN ===
         var fieldPairs = [
-            { source: 3445149, target: 3457315 },  // Paar 1 (bestehendes)
-            { source: 3445152, target: 3457317 },  // Paar 2 (neu)
-            { source: 3457309, target: 3457404 }   // Paar 3 (neu)
+            { source: 3445149, target: 3457315 },  // Titel 1
+            { source: 3445152, target: 3457317 },  // Titel 2
+            { source: 3457309, target: 3457404 },  // Titel 3
+            { source: 3598264, target: 3598303 }   // Titel 4 (neu)
         ];
         // =============================
 
